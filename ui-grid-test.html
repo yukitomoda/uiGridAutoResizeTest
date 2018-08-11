@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="App">
+<head>
+    <meta charset="utf-8">
+    <title>ui-grid test</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-grid/4.6.3/ui-grid.min.css">
+    <style>
+        .my-grid {
+            width: 700px;
+            height: 500px;
+        }
+    </style>
+</head>
+
+<body ng-controller="Controller" ng-cloak>
+    <div ui-grid="{ data: data }" ui-grid-auto-resize class="my-grid" ng-style="gridStyle"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-grid/4.6.3/ui-grid.js"></script>
+<script>
+    "use strict";
+
+    var app = angular.module("App", ["ui.grid", "ui.grid.autoResize"]);
+
+    app.controller("Controller", ["$scope", function ($scope) {
+
+        $scope.data = [];
+        for(var i = 0; i < 1000; i++) {
+            var x = i / 100;
+            $scope.data.push({
+                x: x,
+                sin: Math.sin(x),
+                cos: Math.cos(x),
+                tan: Math.tan(x)
+            });
+        }
+
+    }]);
+
+</script>
+</body>
+</html>
